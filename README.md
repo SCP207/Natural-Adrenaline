@@ -1,8 +1,5 @@
-# SCP Pickup
-This plugin allows you to let SCPs pick up items.
+# Natural Adrenaline
 
-In the configs, you can edit:
-- What the messages say
-- What items can be picked up
-- What SCPs can pick up items
-- How much longer it takes for SCPs to pick up items
+Gives players AHP and movement boost when they get damaged
+
+There are a few configs that require some math to get working well, so expect that
