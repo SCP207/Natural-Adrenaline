@@ -14,10 +14,12 @@ using static Exiled.Events.Handlers.Server;
 namespace NaturalAdrenaline.Handlers {
     public static class EventHandlers {
         public static void Register() {
+            RoundStarted += OnRoundStarted;
             Hurt += OnPlayerHurt;
         }
 
         public static void Unregister() {
+            RoundStarted -= OnRoundStarted;
             Hurt -= OnPlayerHurt;
         }
 
