@@ -21,12 +21,12 @@ namespace NaturalAdrenaline {
         public ScalingType ScalingType { get; set; } = ScalingType.Logrithmic;
 
         [Description("\tThe rate of change (base/coefficient) for AHP")]
-        public float AhpRateOfChange { get; set; } = 1.06617606f;
+        public float AhpRateOfChange { get; set; } = 1.059542855f;
         [Description("\tThe rate of change (base/coefficient) for Movement Boost")]
-        public float MbRateOfChange { get; set; } = 1.26015997f;
+        public float MbRateOfChange { get; set; } = 1.18947572f;
 
-        [Description("\tThe amount the damage gets divided by")]
-        public float Divisor { get; set; } = 7;
+        [Description("\tThe amount the damage gets multiplied by")]
+        public float Multiplier { get; set; } = 0.125f;
 
         [Description("AHP\n\tThe max amount of AHP")]
         public int MaxAhp { get; set; } = 45;

@@ -1,11 +1,9 @@
 ﻿using Exiled.API.Enums;
 using Exiled.API.Features;
 using Exiled.Events.EventArgs.Player;
-using Exiled.Events.EventArgs.Server;
 using MEC;
 using NaturalAdrenaline.Enums;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 using static Exiled.Events.Handlers.Player;
@@ -56,23 +54,23 @@ namespace NaturalAdrenaline.Handlers {
                     Plugin.Instance.Config.MaxIntensity,
                     Plugin.Instance.Config.EffectDuration);
 
-            Timing.RunCoroutine(AllowGettingAdrenaline(ev.Player));
+            Timing.RunCoroutine(AllowReceivingAdrenaline(ev.Player));
         }
         #endregion
 
         #region Math
         private static float GetAmount(float damage, float rateOfChange) => Plugin.Instance.Config.ScalingType switch {
             ScalingType.Linear =>
-                rateOfChange * (damage / Plugin.Instance.Config.Divisor),
+                rateOfChange * (damage * Plugin.Instance.Config.Multiplier),
             ScalingType.Exponential =>
-                Mathf.Pow(rateOfChange, damage / Plugin.Instance.Config.Divisor) - 1,
+                Mathf.Pow(rateOfChange, damage * Plugin.Instance.Config.Multiplier) - 1,
             ScalingType.Logrithmic =>
-                Mathf.Log(damage / Plugin.Instance.Config.Divisor, rateOfChange) + (Plugin.Instance.Config.Divisor / 2)
+                Mathf.Log(damage * Plugin.Instance.Config.Multiplier + 1, rateOfChange)
         };
         #endregion
 
         #region Coroutines
-        private static IEnumerator<float> AllowGettingAdrenaline(Player player) {
+        private static IEnumerator<float> AllowReceivingAdrenaline(Player player) {
             yield return Timing.WaitForSeconds(Plugin.Instance.Config.Duration);
 
             if (Plugin.Instance.CanGetAdrenaline.Contains(player))

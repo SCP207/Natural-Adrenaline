@@ -11,7 +11,7 @@ namespace NaturalAdrenaline {
         public override string Prefix { get; } = "NA";
         public override PluginPriority Priority { get; } = PluginPriority.Default;
         public override Version RequiredExiledVersion { get; } = new(9, 5, 1);
-        public override Version Version { get; } = new(1, 0, 0);
+        public override Version Version { get; } = new(1, 0, 1);
 
         public static Plugin Instance { get; private set; }
 
